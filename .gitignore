@@ -1,0 +1,43 @@
+# OpenTofu / Terraform working files
+**/.terraform/*
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+tfplan
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Lock files are not committed in this repo: the projects are run with both
+# terraform (registry.terraform.io) and tofu (registry.opentofu.org), and a lock
+# file only matches the CLI/registry that created it. Pin versions in
+# required_providers instead. See README.md -> "Lock files".
+.terraform.lock.hcl
+
+# Variable files can hold secrets. Commit *.tfvars.example instead.
+*.tfvars
+*.tfvars.json
+!*.tfvars.example
+# project1 values are plain names (no secrets) and are kept on purpose
+!project1/terraform.tfvars
+
+# Local env / tools
+.env
+*.env
+!.env.example
+__pycache__/
+*.pyc
+.venv/
+node_modules/
+
+# Editors / OS
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
