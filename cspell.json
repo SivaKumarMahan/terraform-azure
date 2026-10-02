@@ -1,0 +1,12 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "ignorePaths": [".terraform/**", "**/*.tfstate*"],
+  "words": [
+    "abfss", "ADLS", "azureuser", "canadacentral", "centralindia", "centralus", "eastus", "westus",
+    "devstgoiuacct", "devstgoiuascct", "devstgoiusacct", "mystg", "testakscluster",
+    "tfstate", "tfstatestorage", "tftest", "tfvars", "tomap", "toset", "endswith", "fileexists", "formatdate",
+    "gunicorn", "healthz", "kubeconform", "kubelet", "kubenet", "lakehouse", "Metastores", "venv", "VNET",
+    "projectalphastorageacco", "projectalphastorageaccount", "roject"
+  ]
+}
