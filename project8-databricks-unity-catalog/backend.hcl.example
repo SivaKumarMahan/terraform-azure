@@ -1,0 +1,7 @@
+# Copy to backend.hcl and fill in. Do not commit backend.hcl.
+resource_group_name  = "rg-tfstate"
+storage_account_name = "sttfstate12345"
+container_name       = "tfstate"
+key                  = "project8-databricks-unity-catalog/terraform.tfstate"
+# Use Entra ID (az login / OIDC) instead of storage account keys.
+use_azuread_auth = true
