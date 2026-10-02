@@ -14,7 +14,7 @@ provider "azurerm" {
       prevent_deletion_if_contains_resources = true
     }
   }
-  subscription_id = ""
-  tenant_id       = ""
+  # null = read ARM_SUBSCRIPTION_ID / ARM_TENANT_ID from the environment (az login also works).
+  subscription_id                 = var.subscription_id
   resource_provider_registrations = "none"
 }

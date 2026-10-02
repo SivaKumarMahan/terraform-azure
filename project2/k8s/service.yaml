@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-demo
+  labels:
+    app: flask-demo
+spec:
+  # LoadBalancer gives a public IP from the AKS standard load balancer.
+  type: LoadBalancer
+  selector:
+    app: flask-demo
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8000
