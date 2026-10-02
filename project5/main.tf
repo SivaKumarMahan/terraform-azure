@@ -18,7 +18,7 @@ resource "azurerm_storage_account" "stg" {
     prevent_destroy       = false
     ignore_changes        = [account_replication_type]
 
-    # Normalise "Canada Central" / "canadacentral" before comparing.
+    # Normalize "Canada Central" / "canadacentral" before comparing.
     precondition {
       condition     = lower(replace(var.location, " ", "")) != "canadacentral"
       error_message = "Storage account creation is not allowed in Canada Central region!"

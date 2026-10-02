@@ -45,7 +45,7 @@ variable "environment_tags" {
 }
 
 variable "storage_account_name" {
-  description = "Raw storage account name. It is normalised in locals.tf (Assignment 3)."
+  description = "Raw storage account name. It is normalized in locals.tf (Assignment 3)."
   type        = string
   default     = "tfstatestorage757"
 }

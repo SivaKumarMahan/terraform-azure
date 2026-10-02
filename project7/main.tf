@@ -17,10 +17,10 @@ resource "azurerm_storage_account" "st" {
     prevent_destroy       = false
     ignore_changes        = [account_replication_type]
 
-    # Assignment 3: fail at plan time if normalisation leaves an invalid name
+    # Assignment 3: fail at plan time if normalization leaves an invalid name
     precondition {
       condition     = length(local.storage_normalized) >= 3
-      error_message = "The normalised storage account name must be at least 3 characters."
+      error_message = "The normalized storage account name must be at least 3 characters."
     }
   }
 }
