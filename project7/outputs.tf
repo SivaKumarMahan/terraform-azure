@@ -54,6 +54,19 @@ output "file_validation_status" {
   value       = local.file_status
 }
 
+output "assignment9_unique_locations" {
+  description = "Unique locations from toset(concat(...))"
+  value       = local.unique_locations
+}
+
+output "assignment11_dates" {
+  description = "Formatted timestamps. They change on every plan because timestamp() is not stable."
+  value = {
+    name_date = local.name_date
+    tag_date  = local.tag_date
+  }
+}
+
 output "cost_report" {
   description = "Monthly cost report (positive, max, avg)"
   value = {
