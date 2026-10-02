@@ -1,7 +1,9 @@
 output "nsg_rule_names" {
-  value = [for rule in azurerm_network_security_group.nsg.security_rule : rule.name]
+  description = "All NSG rule names, using a splat expression."
+  value       = azurerm_network_security_group.nsg.security_rule[*].name
 }
 
 output "nsg_name" {
-  value = azurerm_network_security_group.nsg.name
+  description = "NSG name chosen by the conditional expression."
+  value       = azurerm_network_security_group.nsg.name
 }
