@@ -21,6 +21,8 @@ override.tf.json
 # Variable files can hold secrets. Commit *.tfvars.example instead.
 *.tfvars
 *.tfvars.json
+# Partial backend config with real names: commit backend.hcl.example only
+backend.hcl
 !*.tfvars.example
 # project1 values are plain names (no secrets) and are kept on purpose
 !project1/terraform.tfvars
