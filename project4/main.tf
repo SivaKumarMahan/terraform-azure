@@ -2,13 +2,16 @@ data "azurerm_resource_group" "existing_rg" {
   name = var.resource_group_name
 }
 
+# for_each over a set(string): one storage account per name, keyed by the name.
+# Removing a name from the set destroys only that account (count would shift indexes).
 resource "azurerm_storage_account" "stg" {
+  for_each = var.storage_account_name
 
-    for_each = var.storage_account_name
-
-    name                     = each.value
-    resource_group_name      = data.azurerm_resource_group.existing_rg.name
-    location                 = data.azurerm_resource_group.existing_rg.location
-    account_tier             = "Standard"
-    account_replication_type = "LRS"
+  name                            = each.value
+  resource_group_name             = data.azurerm_resource_group.existing_rg.name
+  location                        = data.azurerm_resource_group.existing_rg.location
+  account_tier                    = "Standard"
+  account_replication_type        = "LRS"
+  min_tls_version                 = "TLS1_2"
+  allow_nested_items_to_be_public = false
 }
