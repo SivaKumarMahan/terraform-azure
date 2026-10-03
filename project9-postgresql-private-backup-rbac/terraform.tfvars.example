@@ -1,0 +1,19 @@
+# Copy to terraform.tfvars and fill in. terraform.tfvars is git-ignored.
+location            = "centralindia"
+resource_group_name = "rg-data-dev"
+prefix              = "data-dev"
+
+# Entra ID: object IDs from `az ad group show -g <name> --query id -o tsv`
+entra_admin_object_id      = "00000000-0000-0000-0000-000000000000"
+entra_admin_principal_name = "pg-admins"
+operators_group_object_id  = "00000000-0000-0000-0000-000000000000"
+
+admin_ssh_public_key = "ssh-ed25519 AAAA... you@laptop"
+
+# Your public IP, so Terraform can write the Key Vault secret from your laptop.
+# Leave empty when you run from inside the VNet (self-hosted agent).
+key_vault_allowed_ips = ["203.0.113.10"]
+
+backup_retention_days        = 14
+geo_redundant_backup_enabled = false
+vault_storage_mode           = "GeoRedundant"

@@ -8,6 +8,8 @@
     "tfstate", "tfstatestorage", "tftest", "tfvars", "tomap", "toset", "endswith", "fileexists", "formatdate",
     "gunicorn", "healthz", "kubeconform", "kubelet", "kubenet", "venv", "VNET",
     "appgw", "aquasec", "kusto", "nohup", "nproc", "reimage", "SAGW", "snet", "tftpl", "vmss",
+    "appdb", "dbname", "DNSKV", "DNSPG", "getent", "isready", "nslookup", "PGCRYPTO", "pgadmin", "PGPASSWORD",
+    "privatelink", "sslmode", "vaultcore",
     "projectalphastorageacco", "projectalphastorageaccount", "roject"
   ]
 }
