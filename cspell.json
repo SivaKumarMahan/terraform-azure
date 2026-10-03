@@ -3,10 +3,10 @@
   "language": "en",
   "ignorePaths": [".terraform/**", "**/*.tfstate*"],
   "words": [
-    "abfss", "ADLS", "azureuser", "canadacentral", "centralindia", "centralus", "eastus", "westus",
+    "azureuser", "canadacentral", "centralindia", "centralus", "eastus", "westus",
     "devstgoiuacct", "devstgoiuascct", "devstgoiusacct", "mystg", "testakscluster",
     "tfstate", "tfstatestorage", "tftest", "tfvars", "tomap", "toset", "endswith", "fileexists", "formatdate",
-    "gunicorn", "healthz", "kubeconform", "kubelet", "kubenet", "lakehouse", "Metastores", "venv", "VNET",
+    "gunicorn", "healthz", "kubeconform", "kubelet", "kubenet", "venv", "VNET",
     "projectalphastorageacco", "projectalphastorageaccount", "roject"
   ]
 }

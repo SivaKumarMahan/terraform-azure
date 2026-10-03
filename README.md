@@ -1,6 +1,6 @@
 # terraform-azure
 
-Terraform and OpenTofu projects on Azure. Each folder is a small, separate project with its own state and its own README. They go from language basics (variables, meta-arguments, lifecycle, expressions, functions) to modules with remote state, AKS with ACR, and a Databricks workspace governed by Unity Catalog.
+Terraform and OpenTofu projects on Azure. Each folder is a small, separate project with its own state and its own README. They go from language basics (variables, meta-arguments, lifecycle, expressions, functions) to modules with remote state, and AKS with ACR.
 
 ## Projects
 
@@ -13,17 +13,16 @@ Terraform and OpenTofu projects on Azure. Each folder is a small, separate proje
 | [project5](project5/README.md) | `lifecycle`: `create_before_destroy`, `prevent_destroy`, `ignore_changes`, `precondition` | Lifecycle rules | Static checks only |
 | [project6](project6/README.md) | `dynamic` blocks from locals, conditional names, splat outputs | NSG, expressions | Static checks only |
 | [project7](project7/README.md) | 11 function assignments (`merge`, `substr`, `lookup`, `toset`, `formatdate`, ...) | Built-in functions, validations | Static checks only |
-| [project8-databricks-unity-catalog](project8-databricks-unity-catalog/README.md) | Premium Databricks workspace, ADLS Gen2 + Access Connector, storage credential, external locations, catalog with bronze/silver/gold, group grants | OpenTofu, azurerm, databricks provider, `tofu test` | Static checks only |
 
 "Static checks only" means `fmt`, `init -backend=false`, `validate` and, where there is a `tests/` folder, `tofu test` with mocked providers. Nothing was deployed to Azure in the review. See the "Tested" section of each README for the exact commands and results.
 
 ## Prerequisites
 
-- [Terraform](https://developer.hashicorp.com/terraform/install) 1.5+ or [OpenTofu](https://opentofu.org/docs/intro/install/) 1.6+ (project8 needs OpenTofu 1.8+)
+- [Terraform](https://developer.hashicorp.com/terraform/install) 1.5+ or [OpenTofu](https://opentofu.org/docs/intro/install/) 1.6+
 - [Azure CLI](https://learn.microsoft.com/cli/azure/install-azure-cli), logged in with `az login`
 - An Azure subscription. Most projects expect an existing resource group `test-rg`
 - For projects 3-7: a state storage account `tfstatestorage759` with a container `tfstate` in `test-rg` (project1 uses `tfstatestorage749`)
-- For project2: `kubectl` and Docker. For project8: a Databricks account admin and an existing Unity Catalog metastore
+- For project2: `kubectl` and Docker
 
 ## How to use
 
@@ -49,7 +48,7 @@ cd project3
 terraform fmt -check -recursive
 terraform init -backend=false
 terraform validate
-terraform test     # only in projects with a tests/ folder (project3, project8)
+terraform test     # only in projects with a tests/ folder (project3)
 ```
 
 ### State keys
@@ -75,8 +74,6 @@ terraform-azure/
 ├── project5/                          lifecycle rules
 ├── project6/                          dynamic blocks, conditionals, splat
 ├── project7/                          functions
-├── project8-databricks-unity-catalog/ Databricks + Unity Catalog (OpenTofu)
-│   └── tests/
 └── .gitignore                         state, .terraform/, tfvars, lock files
 ```
 
@@ -88,5 +85,4 @@ terraform-azure/
 - Secret handling: `random_password`, Key Vault with RBAC, sensitive outputs, no credentials in code
 - Azure networking and compute: VNet, subnets, NSGs, Linux VMs, management locks
 - Containers on Azure: AKS with managed identity, ACR without admin user, `AcrPull` role assignment, hardened Kubernetes manifests
-- Data platform governance: Databricks workspace, Access Connector managed identity, Unity Catalog storage credentials, external locations, catalogs, schemas and grants to groups
 - Testing infrastructure code offline with `tofu test` and mocked providers
