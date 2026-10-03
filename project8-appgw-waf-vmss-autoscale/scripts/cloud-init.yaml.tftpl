@@ -1,0 +1,41 @@
+#cloud-config
+# Rendered by templatefile() in vmss.tf. Installs a tiny Python web server as a
+# hardened systemd service. Uses only the python3 that ships with Ubuntu, so no
+# package download is needed at boot.
+write_files:
+  - path: /opt/webapp/server.py
+    owner: root:root
+    permissions: "0755"
+    content: |
+      ${indent(6, server_py)}
+  - path: /etc/systemd/system/webapp.service
+    owner: root:root
+    permissions: "0644"
+    content: |
+      [Unit]
+      Description=Tiny web server with /health endpoint
+      After=network-online.target
+      Wants=network-online.target
+
+      [Service]
+      # Runs as a throw-away system user created by systemd, never as root
+      DynamicUser=true
+      Environment=PORT=${port}
+      ExecStart=/usr/bin/python3 /opt/webapp/server.py
+      Restart=always
+      RestartSec=2
+      # Bind port 80 without running as root
+      AmbientCapabilities=CAP_NET_BIND_SERVICE
+      CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+      NoNewPrivileges=true
+      ProtectSystem=strict
+      ProtectHome=true
+      PrivateTmp=true
+      MemoryMax=256M
+
+      [Install]
+      WantedBy=multi-user.target
+
+runcmd:
+  - systemctl daemon-reload
+  - systemctl enable --now webapp.service

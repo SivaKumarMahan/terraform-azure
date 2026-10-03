@@ -7,6 +7,7 @@
     "devstgoiuacct", "devstgoiuascct", "devstgoiusacct", "mystg", "testakscluster",
     "tfstate", "tfstatestorage", "tftest", "tfvars", "tomap", "toset", "endswith", "fileexists", "formatdate",
     "gunicorn", "healthz", "kubeconform", "kubelet", "kubenet", "venv", "VNET",
+    "appgw", "aquasec", "kusto", "nohup", "nproc", "reimage", "SAGW", "snet", "tftpl", "vmss",
     "projectalphastorageacco", "projectalphastorageaccount", "roject"
   ]
 }
